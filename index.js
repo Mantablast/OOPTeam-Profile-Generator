@@ -4,7 +4,6 @@ const path = require('path');
 const generateHtml = require("./dist/generateHTML");
 // const Employee = require("./lib/Employee");
 
-
 const questions1 = () => {
     inquirer.prompt([
         {
