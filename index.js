@@ -88,17 +88,21 @@ const questions2 = () => {
             ],
         }
     ])
-    addTeamMembers(role)
+    .then(({role})=>{
+        console.log(role);
+        addTeamMembers(role)
+    })
+    
 }
 
 function addTeamMembers(role) {
-        switch(role.name) {
+        switch(role) {
             case 'Engineer':  // if (role === 'value1')
             inquirer.prompt([
                 {
                     message: "Please enter the Engineer's name.",
                     name: "name",
-                    typer: "input",
+                    type: "input",
                     validate: userInput => {
                         if (userInput) {
                             return true;
@@ -111,7 +115,7 @@ function addTeamMembers(role) {
                 {
                     message: "Please enter the Engineer's employee ID number.",
                     name: "id",
-                    typer: "input",
+                    type: "input",
                     validate: userInput => {
                         if (userInput) {
                             return true;
@@ -124,7 +128,7 @@ function addTeamMembers(role) {
                 {
                     message: "Please enter the Engineer's email.",
                     name: "email",
-                    typer: "input",
+                    type: "input",
                     default: () => { },
                     validate: function (email) {
                     valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
@@ -153,8 +157,9 @@ function addTeamMembers(role) {
             .then(function (teamresponse) {
                 console.log(teamresponse)
                 console.log("Team member added")
+                questions2();
             })
-            questions2();
+
             break;
           
             case 'Intern':  // if (role.name === 'value2')
@@ -162,7 +167,7 @@ function addTeamMembers(role) {
                 {
                     message: "Please enter the intern's name.",
                     name: "name",
-                    typer: "input",
+                    type: "input",
                     validate: userInput => {
                         if (userInput) {
                             return true;
@@ -175,7 +180,7 @@ function addTeamMembers(role) {
                 {
                     message: "Please enter the interns's employee ID number.",
                     name: "id",
-                    typer: "input",
+                    type: "input",
                     validate: userInput => {
                         if (userInput) {
                             return true;
@@ -188,7 +193,7 @@ function addTeamMembers(role) {
                 {
                     message: "Please enter the Intern's email.",
                     name: "email",
-                    typer: "input",
+                    type: "input",
                     default: () => { },
                     validate: function (email) {
                     valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
@@ -217,8 +222,8 @@ function addTeamMembers(role) {
             .then(function (teamresponse) {
                 console.log(teamresponse)
                 console.log("Team member added")
+                questions2();
             })
-            questions2();
             break;
           
             case 'Entries complete.  Generate HTML':
