@@ -7,147 +7,212 @@ const generateHtml = require("./dist/generateHTML");
 const questions1 = () => {
     inquirer.prompt([
         {
-        type: 'input',
-        name: 'name',
-        message: 'Hi, what is your name? (Required)',
-        validate: userInput => {
-            if (userInput) {
-            return true;
-            } else {
-            console.log('Your name is required!  Thank you.');
-            return false;
-            }
-            }
-        },
-        {
-        type: 'input',
-        name: 'empID',
-        message: 'Please enter your employee ID number. (Required)',
-        validate: userInput => {
-            if (userInput) {
-            return true;
-            } else {
-            console.log('Your employee number is required!  Thank you.');
-            return false;
-            }
+            type: 'input',
+            name: 'name',
+            message: 'Hi, what is your name? (Required)',
+            validate: userInput => {
+                if (userInput) {
+                    return true;
+                } else {
+                    console.log('Your name is required!  Thank you.');
+                    return false;
+                }
             }
         },
         {
-        message: "Please enter your email",
-        name: "email",
-        type: "input",
-        default: () => {},
-        validate: function (email) {
-            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
-            if (valid) {
-                return true;
-            } else {
-                console.log("Please enter a valid email")
-                return false;
-            }
+            type: 'input',
+            name: 'id',
+            message: 'Please enter your employee ID number. (Required)',
+            validate: userInput => {
+                if (userInput) {
+                    return true;
+                } else {
+                    console.log('Your employee number is required!  Thank you.');
+                    return false;
+                }
             }
         },
         {
-        type: 'input',
-        name: 'officenum',
-        message: 'What is your office number? (Required)',
-        validate: projectInput => {
-            if (projectInput) {
-            return true;
-            } else {
-            console.log('Your name is required!  Thank you.');
-            return false;
+            message: "Please enter your email",
+            name: "email",
+            type: "input",
+            default: () => { },
+            validate: function (email) {
+                valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+                if (valid) {
+                    return true;
+                } else {
+                    console.log("Please enter a valid email")
+                    return false;
+                }
             }
+        },
+        {
+            type: 'input',
+            name: 'officenum',
+            message: 'What is your office number? (Required)',
+            validate: projectInput => {
+                if (projectInput) {
+                    return true;
+                } else {
+                    console.log('Your name is required!  Thank you.');
+                    return false;
+                }
             }
         }
     ])
-    .then(function(managerresponse) {
-        console.log(managerresponse);
-        console.log("Great!  Lets add your team members!")
-        questions2();
-    })
-    
+        .then(function (managerresponse) {
+            console.log(managerresponse);
+            console.log("Great!  Lets add your team members!")
+            questions2();
+        })
+
 }
 const questions2 = () => {
     //Team members to add
     inquirer.prompt([
-    {
-    type: 'input',
-    name: 'name',
-    message: 'What is the name of your first team member? (Required)',
-    validate: userInput => {
-        if (userInput) {
-        return true;
-        } else {
-        console.log('The team member name is required!  Thank you.');
-        return false;
-        }
-        }
-    },
-    {
-    type: 'input',
-    name: 'empID',
-    message: 'Please enter their employee ID number. (Required)',
-    validate: userInput => {
-        if (userInput) {
-        return true;
-        } else {
-        console.log('Please enter their employee ID number.  Thank you.');
-        return false;
-        }
-        }
-    },
-    {
-    message: "Please enter the team member email",
-    name: "email",
-    type: "input",
-    default: () => {},
-    validate: function (email) {
-        valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
-        if (valid) {
-            return true;
-        } else {
-            console.log("Please enter a valid email")
-            return false;
-        }
-        }
-    },
-    {
-        type: 'list',
-        message: "Please indicat your team member's role.",
-        name: 'role',
-        choices: [
-            {
-                name: 'Engineer',
-            },
-            {
-                name: 'Intern',
-            }
-        ],
-        validate: function (role) {
-            if(role === "Engineer") {
-                inquirer.prompt([
+        {
+            type: 'list',
+            message: "Please indicat your team member's role.",
+            name: 'role',
+            choices: [
                 {
-                message: "Please the member's Github username.",
-                name: "github",
-                type: "input",
-                }
-            ])
-            } else {
-                inquirer.prompt([
+                    name: 'Engineer',
+                },
                 {
-                message: "Please the member's school name.",
-                name: "school",
-                type: "input",
+                    name: 'Intern',
+                },
+                {
+                    name: 'Entries complete.  Generate HTML',
                 }
-            ])
+            ],
+            // Adding team members section
+            validate: function (role) {
+                if (role === "Engineer") {
+                    inquirer.prompt([
+                        {
+                            message: "Please enter the Engineer's name.",
+                            name: "name",
+                            typer: "input",
+                            validate: userInput => {
+                                if (userInput) {
+                                    return true;
+                                } else {
+                                    console.log('Engineer name is required.  Thank you.');
+                                    return false;
+                                }
+                            }
+                        },
+                        {
+                            message: "Please enter the Engineer's employee ID number.",
+                            name: "id",
+                            typer: "input",
+                            validate: userInput => {
+                                if (userInput) {
+                                    return true;
+                                } else {
+                                    console.log('Engineer employee ID number is required.  Thank you.');
+                                    return false;
+                                }
+                            }
+                        },
+                        {
+                            message: "Please enter the Engineer's email.",
+                            name: "email",
+                            typer: "input",
+                            default: () => { },
+                            validate: function (email) {
+                            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+                            if (valid) {
+                            return true;
+                            } else {
+                            console.log("Please enter a valid email")
+                            return false;
+                            }
+                            }   
+                        },
+                        {
+                            message: "Please the engineer's Github username.",
+                            name: "github",
+                            type: "input",
+                            validate: userInput => {
+                                if (userInput) {
+                                    return true;
+                                } else {
+                                    console.log('Github name is required.  Thank you.');
+                                    return false;
+                                }
+                            }
+                        },
+                    ])
+                    //Intern employee
+                    if (role === "Intern") {
+                        inquirer.prompt([
+                            {
+                                message: "Please enter the intern's name.",
+                                name: "name",
+                                typer: "input",
+                                validate: userInput => {
+                                    if (userInput) {
+                                        return true;
+                                    } else {
+                                        console.log('Intern name is required.  Thank you.');
+                                        return false;
+                                    }
+                                }
+                            },
+                            {
+                                message: "Please enter the interns's employee ID number.",
+                                name: "id",
+                                typer: "input",
+                                validate: userInput => {
+                                    if (userInput) {
+                                        return true;
+                                    } else {
+                                        console.log('Intern employee ID number is required.  Thank you.');
+                                        return false;
+                                    }
+                                }
+                            },
+                            {
+                                message: "Please enter the Intern's email.",
+                                name: "email",
+                                typer: "input",
+                                default: () => { },
+                                validate: function (email) {
+                                valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+                                if (valid) {
+                                return true;
+                                } else {
+                                console.log("Please enter a valid email")
+                                return false;
+                                }
+                                }   
+                            },
+                            {
+                                message: "Please enter the intern's school name.",
+                                name: "school",
+                                type: "input",
+                                validate: userInput => {
+                                    if (userInput) {
+                                        return true;
+                                    } else {
+                                        console.log('Intern name is required.  Thank you.');
+                                        return false;
+                                    }
+                                }
+                            }
+                        ])
+                    } else {
+                        console.log('Entries complete');
+                    }
+                }        
             }
         }
-    }
     ])
-    .then(function(teamresponse) {
-        console.log(teamresponse);
-    })
+    .then(function (teamresponse) {
+    console.log(teamresponse);
+})
 }
 
 
