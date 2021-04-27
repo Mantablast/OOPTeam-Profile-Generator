@@ -1,8 +1,8 @@
 const fs = require('fs'); //update delete write etc
 const inquirer = require('inquirer');
 const path = require('path');
-// const generateHtml = require("./dist/generateHTML");
-// const Employee = require("./lib/Employee");
+const generateHtml = require("./dist/generateHTML");
+const Employee = require("./lib/Employee");
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
@@ -66,9 +66,10 @@ const questions1 = () => {
             }
         }
     ])
-        .then(function (managerresponse) {
-            console.log(managerresponse);
+        .then(function (myNewEmployee) {
+            console.log(myNewEmployee);
             console.log("Great!  Lets add your team members!")
+            Team.push(myNewEmployee);
             questions2();
         })
 
@@ -236,22 +237,14 @@ function addTeamMembers(role) {
             case 'Entries complete.  Generate HTML':
             console.log("Questions complete");
             Team.push(myNewEmployee);
+            writeToFile(myNewEmployee);
             }      
 }
 
-function writeToFile () {
+function writeToFile (myNewEmployee) {
     fs.writeFileSync(path.join(process.cwd(), "myTeam.html"), generateHtml(Team), "utf8");
 };
 
 
-
-
-
-//I don't think this function will work because information will be pulled from multiple js files*
-// function writeToFile(response) {
-//     const wholeObject = generateHtml(response);
-//     console.log(wholeObject);
-//     fs.writeFileSync(path.join(process.cwd(), "myTeam.html"), wholeObject);
-// };
 
 questions1();
