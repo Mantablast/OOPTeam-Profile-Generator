@@ -92,8 +92,8 @@ const questions2 = () => {
 }
 
 function addTeamMembers(role) {
-        switch(role) {
-            case 'Engineer':  // if (x === 'value1')
+        switch(role.name) {
+            case 'Engineer':  // if (role === 'value1')
             inquirer.prompt([
                 {
                     message: "Please enter the Engineer's name.",
@@ -150,10 +150,14 @@ function addTeamMembers(role) {
                     }
                 },
             ])
+            .then(function (teamresponse) {
+                console.log(teamresponse)
+                console.log("Team member added")
+            })
             questions2();
             break;
           
-            case 'Intern':  // if (x === 'value2')
+            case 'Intern':  // if (role.name === 'value2')
             inquirer.prompt([
                 {
                     message: "Please enter the intern's name.",
@@ -210,16 +214,18 @@ function addTeamMembers(role) {
                     }
                 }
             ])
+            .then(function (teamresponse) {
+                console.log(teamresponse)
+                console.log("Team member added")
+            })
             questions2();
             break;
           
             case 'Entries complete.  Generate HTML':
               console.log("Questions complete");
-              .then(function (teamresponse) {
-                console.log(teamresponse);
-            }
-        }
-    }
+
+            }      
+}
 
 
 
