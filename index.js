@@ -3,6 +3,11 @@ const inquirer = require('inquirer');
 const path = require('path');
 // const generateHtml = require("./dist/generateHTML");
 // const Employee = require("./lib/Employee");
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+
+let Team = [];
 
 const questions1 = () => {
     inquirer.prompt([
@@ -154,9 +159,10 @@ function addTeamMembers(role) {
                     }
                 },
             ])
-            .then(function (teamresponse) {
-                console.log(teamresponse)
+            .then(function (myNewEmployee) {
+                console.log(myNewEmployee)
                 console.log("Team member added")
+                Team.push(myNewEmployee);
                 questions2();
             })
 
@@ -219,20 +225,23 @@ function addTeamMembers(role) {
                     }
                 }
             ])
-            .then(function (teamresponse) {
-                console.log(teamresponse)
+            .then(function (myNewEmployee) {
+                console.log(myNewEmployee)
                 console.log("Team member added")
+                Team.push(myNewEmployee);
                 questions2();
             })
             break;
           
             case 'Entries complete.  Generate HTML':
-              console.log("Questions complete");
-
+            console.log("Questions complete");
+            Team.push(myNewEmployee);
             }      
 }
 
-
+function writeToFile () {
+    fs.writeFileSync(path.join(process.cwd(), "myTeam.html"), generateHtml(Team), "utf8");
+};
 
 
 
