@@ -1,13 +1,4 @@
-const Employee = require('../lib/Employee');
-const Manager = require('../lib/Manager');
-const Engineer = require('../lib/Engineer');
-const Intern = require('../lib/Intern')
 
-
-
-//Where the html will be generated
-function generateHtml() {
-    return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +9,7 @@ function generateHtml() {
     <title>My Team</title>
 </head>
 <body>
-    <h1>Manager Name : ${Manager.name}</h1>
+    <h1>Manager Name : Manager</h1>
 
     <div class="card border-dark mb-3" style="max-width: 18rem;">
     <div class="card-header">Header</div>
@@ -29,9 +20,4 @@ function generateHtml() {
 </div>
 </body>
 </html>
-    `;
-}
-
-
-
-module.exports = generateHtml;
+    

@@ -6,6 +6,7 @@ const Employee = require("./lib/Employee");
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+let myNewEmployee = "";
 
 let Team = [];
 
@@ -96,7 +97,7 @@ const questions2 = () => {
     ])
     .then(({role})=>{
         console.log(role);
-        addTeamMembers(role)
+        addTeamMembers(role);
     })
     
 }
@@ -227,9 +228,10 @@ function addTeamMembers(role) {
                 }
             ])
             .then(function (myNewEmployee) {
-                console.log(myNewEmployee)
+                // console.log(myNewEmployee)
                 console.log("Team member added")
                 Team.push(myNewEmployee);
+                console.log(myNewEmployee)
                 questions2();
             })
             break;
