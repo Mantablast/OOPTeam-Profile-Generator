@@ -63,7 +63,7 @@ if(Team[i].getRole() === "Intern") {
     <h4>Employee ID: ${Team[i].id}</h4>
     <p class="card-text">
     <a href = "mailto: ${Team[i].email}">${Team[i].email}</a>
-    <h4>Office #: ${Team[i].github}</h4>
+    <h4>Github: <a href="https://github.com/${Team[i].github}">${Team[i].github}</a></h4>
     </p>
     </div>
     </div>
@@ -72,12 +72,12 @@ if(Team[i].getRole() === "Intern") {
 }
 }
 
-function footerGen() {
-    return`
-    </body>
-    </html>
-    `;
-}
+// function footerGen() {
+//     return`
+//     </body>
+//     </html>
+//     `;
+// }
 module.exports = generateHtml;
 
 //append to data variable continuously until loop is over
