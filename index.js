@@ -70,7 +70,7 @@ const questions1 = () => {
         .then(function (myNewEmployee) {
             console.log(myNewEmployee);
             console.log("Great!  Lets add your team members!")
-            const manager = new Manager(myNewEmployee.name, myNewEmployee.id, myNewEmployee.email,myNewEmployee.officenum);
+            const manager = new Manager(myNewEmployee.name, myNewEmployee.id, myNewEmployee.email,myNewEmployee.officeNumber);
             Team.push(manager);
             questions2();
         })

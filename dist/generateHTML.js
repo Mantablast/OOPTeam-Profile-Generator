@@ -7,7 +7,6 @@ const Intern = require('../lib/Intern')
 
 //Where the html will be generated
 function generateHtml(Team) {
-    teamGen(Team);
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -30,18 +29,17 @@ function generateHtml(Team) {
     <h4>Employee ID: ${Team[0].id}</h4>
     <p class="card-text">
     <a href = "mailto: ${Team[0].email}">${Team[0].email}</a>
-    <h4>Office #: ${Team[0].officenum}</h4>
+    <h4>Office #: ${Team[0].officeNumber}</h4>
     </p>
     </div>
     </div>
+    ${teamGen(Team)}
     `;
 } 
 
 function teamGen(Team) {
-    console.log(Team);
 for (i = 0; i < Team.length; i++) {
-switch (Team[i].getRole()) {
-  case 'Intern':
+if(Team[i].getRole() === "Intern") {
     return `
     <div class="card border-dark mb-3" style="max-width: 18rem;">
     <div class="card-header"><h1>Name : ${Team[i].name}</h1></div>
@@ -55,8 +53,8 @@ switch (Team[i].getRole()) {
     </div>
     </div>
     `;
-    
-  case 'Engineer':
+
+} else { 'Engineer'
     return `
     <div class="card border-dark mb-3" style="max-width: 18rem;">
     <div class="card-header"><h1>Name : ${Team[i].name}</h1></div>
@@ -69,23 +67,19 @@ switch (Team[i].getRole()) {
     </p>
     </div>
     </div>
+    ${footerGen()}
     `;
-    break;
-};
-}}
-
-function footerGen() {
-    return`
-</body>
-</html>
-`;
+}
+}
 }
 
 
-footerGen();
-
-
+function footerGen() {
+    return`
+    </body>
+    </html>
+    `;
+}
 module.exports = generateHtml;
 
 //append to data variable continuously until loop is over
-//
