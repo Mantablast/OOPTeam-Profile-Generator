@@ -71,7 +71,7 @@ const questions1 = () => {
             console.log(myNewEmployee);
             console.log("Great!  Lets add your team members!")
             const manager = new Manager(myNewEmployee.name, myNewEmployee.id, myNewEmployee.email,myNewEmployee.officenum);
-            Team.push(myNewEmployee);
+            Team.push(manager);
             questions2();
         })
 
@@ -166,7 +166,7 @@ function addTeamMembers(role) {
                 console.log(myNewEmployee)
                 console.log("Team member added")
                 const engineer = new Engineer(myNewEmployee.name, myNewEmployee.id, myNewEmployee.email,myNewEmployee.github);
-                Team.push(myNewEmployee);
+                Team.push(engineer);
                 questions2();
             })
 
@@ -233,7 +233,7 @@ function addTeamMembers(role) {
                 // console.log(myNewEmployee)
                 console.log("Team member added")
                 const intern = new Intern(myNewEmployee.name, myNewEmployee.id, myNewEmployee.email,myNewEmployee.school);
-                Team.push(myNewEmployee);
+                Team.push(intern);
                 console.log(myNewEmployee)
                 questions2();
             })

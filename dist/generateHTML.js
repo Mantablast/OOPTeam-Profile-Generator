@@ -38,8 +38,9 @@ function generateHtml(Team) {
 } 
 
 function teamGen(Team) {
-for (i = 1; i < Team.length; i++) {
-switch (role) {
+    console.log(Team);
+for (i = 0; i < Team.length; i++) {
+switch (Team[i].getRole()) {
   case 'Intern':
     return `
     <div class="card border-dark mb-3" style="max-width: 18rem;">
@@ -54,7 +55,7 @@ switch (role) {
     </div>
     </div>
     `;
-    break;
+    
   case 'Engineer':
     return `
     <div class="card border-dark mb-3" style="max-width: 18rem;">
@@ -85,3 +86,6 @@ footerGen();
 
 
 module.exports = generateHtml;
+
+//append to data variable continuously until loop is over
+//
