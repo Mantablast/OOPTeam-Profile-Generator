@@ -240,6 +240,7 @@ function addTeamMembers(role) {
             console.log("Questions complete");
             Team.push(myNewEmployee);
             writeToFile(myNewEmployee);
+            console.log(Team);
             }      
 }
 
