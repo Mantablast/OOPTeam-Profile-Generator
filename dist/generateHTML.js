@@ -28,7 +28,7 @@ function generateHtml(Team) {
     <h3 class="card-title">Manager</h3>
     <h4>Employee ID: ${Team[0].id}</h4>
     <p class="card-text">
-    <h4>Email: ${Team[0].email}</h4>
+    <a href = "mailto: ${Team[0].email}">${Team[0].email}</a>
     <h4>Office #: ${Team[0].officenum}</h4>
     </p>
     </div>
