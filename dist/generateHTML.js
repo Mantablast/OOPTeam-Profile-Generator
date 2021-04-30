@@ -7,6 +7,7 @@ const Intern = require('../lib/Intern')
 
 //Where the html will be generated
 function generateHtml(Team) {
+    teamGen(Team);
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -33,13 +34,54 @@ function generateHtml(Team) {
     </p>
     </div>
     </div>
-    
+    `;
+} 
+
+function teamGen(Team) {
+for (i = 1; i < Team.length; i++) {
+switch (role) {
+  case 'Intern':
+    return `
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+    <div class="card-header"><h1>Name : ${Team[i].name}</h1></div>
+    <div class="card-body text-dark">
+    <h3 class="card-title">Manager</h3>
+    <h4>Employee ID: ${Team[i].id}</h4>
+    <p class="card-text">
+    <a href = "mailto: ${Team[i].email}">${Team[i].email}</a>
+    <h4>Office #: ${Team[i].school}</h4>
+    </p>
+    </div>
+    </div>
+    `;
+    break;
+  case 'Engineer':
+    return `
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+    <div class="card-header"><h1>Name : ${Team[i].name}</h1></div>
+    <div class="card-body text-dark">
+    <h3 class="card-title">Manager</h3>
+    <h4>Employee ID: ${Team[i].id}</h4>
+    <p class="card-text">
+    <a href = "mailto: ${Team[i].email}">${Team[i].email}</a>
+    <h4>Office #: ${Team[i].github}</h4>
+    </p>
+    </div>
+    </div>
+    `;
+    break;
+};
+}}
+
+function footerGen() {
+    return`
 </body>
 </html>
-    `
-;
+`;
 }
 
+
+footerGen();
 
 
 module.exports = generateHtml;
