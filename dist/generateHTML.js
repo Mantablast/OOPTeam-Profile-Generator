@@ -18,16 +18,26 @@ function generateHtml(Team) {
     <title>My Team</title>
 </head>
 <body>
+    <header><nav class="navbar navbar-dark bg-primary">
+    My Team Info
+    </nav>
+    </header>
     <div class="card border-dark mb-3" style="max-width: 18rem;">
-    <div class="card-header"><h1>Manager Name : ${team[0].name}</h1></div>
+    <div class="card-header"><h1>Name : ${Team[0].name}</h1></div>
     <div class="card-body text-dark">
-    <h5 class="card-title">Dark card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
+    <h3 class="card-title">Manager</h3>
+    <h4>Employee ID: ${Team[0].id}</h4>
+    <p class="card-text">
+    <h4>Email: ${Team[0].email}</h4>
+    <h4>Office #: ${Team[0].officenum}</h4>
+    </p>
+    </div>
+    </div>
+    
 </body>
 </html>
-    `;
+    `
+;
 }
 
 

@@ -70,6 +70,7 @@ const questions1 = () => {
         .then(function (myNewEmployee) {
             console.log(myNewEmployee);
             console.log("Great!  Lets add your team members!")
+            const manager = new Manager(myNewEmployee.name, myNewEmployee.id, myNewEmployee.email,myNewEmployee.officenum);
             Team.push(myNewEmployee);
             questions2();
         })
@@ -164,6 +165,7 @@ function addTeamMembers(role) {
             .then(function (myNewEmployee) {
                 console.log(myNewEmployee)
                 console.log("Team member added")
+                const engineer = new Engineer(myNewEmployee.name, myNewEmployee.id, myNewEmployee.email,myNewEmployee.github);
                 Team.push(myNewEmployee);
                 questions2();
             })
@@ -230,6 +232,7 @@ function addTeamMembers(role) {
             .then(function (myNewEmployee) {
                 // console.log(myNewEmployee)
                 console.log("Team member added")
+                const intern = new Intern(myNewEmployee.name, myNewEmployee.id, myNewEmployee.email,myNewEmployee.school);
                 Team.push(myNewEmployee);
                 console.log(myNewEmployee)
                 questions2();
@@ -238,7 +241,8 @@ function addTeamMembers(role) {
           
             case 'Entries complete.  Generate HTML':
             console.log("Questions complete");
-            Team.push(myNewEmployee);
+
+            // Team.push(myNewEmployee);
             writeToFile(myNewEmployee);
             console.log(Team);
             }      
