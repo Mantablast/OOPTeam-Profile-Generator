@@ -55,7 +55,7 @@ const questions1 = () => {
         },
         {
             type: 'input',
-            name: 'officenum',
+            name: 'officeNumber',
             message: 'What is your office number? (Required)',
             validate: projectInput => {
                 if (projectInput) {

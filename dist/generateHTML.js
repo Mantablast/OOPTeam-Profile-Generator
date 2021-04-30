@@ -38,12 +38,8 @@ function generateHtml(Team) {
     `;
 } 
 
-
-Team.forEach(function teamGen(Team) {
-    
-  
-// function teamGen(Team) {
-// for (i = 1; i < Team.length; i++) {
+function teamGen(Team) {
+for (i = 1; i < Team.length; i++) {
 if(Team[i].getRole() === "Intern") {
     return `
     <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;">
@@ -73,9 +69,8 @@ if(Team[i].getRole() === "Intern") {
     </div>
     `;
 }
-
-
-})
+}
+}
 
 function footerGen() {
     return`
