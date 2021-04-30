@@ -22,7 +22,7 @@ function generateHtml(Team) {
     My Team Info
     </nav>
     </header>
-    <div class="card border-dark mb-3" style="max-width: 18rem;">
+    <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;">
     <div class="card-header"><h1>Name : ${Team[0].name}</h1></div>
     <div class="card-body text-dark">
     <h3 class="card-title">Manager</h3>
@@ -34,32 +34,36 @@ function generateHtml(Team) {
     </div>
     </div>
     ${teamGen(Team)}
+    
     `;
 } 
 
-function teamGen(Team) {
-for (i = 0; i < Team.length; i++) {
+
+Team.forEach(function teamGen(Team) {
+    
+  
+// function teamGen(Team) {
+// for (i = 1; i < Team.length; i++) {
 if(Team[i].getRole() === "Intern") {
     return `
-    <div class="card border-dark mb-3" style="max-width: 18rem;">
+    <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;">
     <div class="card-header"><h1>Name : ${Team[i].name}</h1></div>
     <div class="card-body text-dark">
-    <h3 class="card-title">Manager</h3>
+    <h3 class="card-title">Intern</h3>
     <h4>Employee ID: ${Team[i].id}</h4>
     <p class="card-text">
     <a href = "mailto: ${Team[i].email}">${Team[i].email}</a>
-    <h4>Office #: ${Team[i].school}</h4>
+    <h4>School: ${Team[i].school}</h4>
     </p>
     </div>
     </div>
     `;
-
 } else { 'Engineer'
     return `
-    <div class="card border-dark mb-3" style="max-width: 18rem;">
+    <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;">
     <div class="card-header"><h1>Name : ${Team[i].name}</h1></div>
     <div class="card-body text-dark">
-    <h3 class="card-title">Manager</h3>
+    <h3 class="card-title">Engineer</h3>
     <h4>Employee ID: ${Team[i].id}</h4>
     <p class="card-text">
     <a href = "mailto: ${Team[i].email}">${Team[i].email}</a>
@@ -67,12 +71,11 @@ if(Team[i].getRole() === "Intern") {
     </p>
     </div>
     </div>
-    ${footerGen()}
     `;
 }
-}
-}
 
+
+})
 
 function footerGen() {
     return`
