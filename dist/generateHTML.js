@@ -40,16 +40,22 @@ function generateHtml(Team) {
 
 function teamGen(Team) {
 for (i = 1; i < Team.length; i++) {
-if(Team[i].getRole() === "Intern") {
+    let teamMateRole = Team[i].getRole();
+    let teamMateName = Team[i].name;
+    let teamMateId = Team[i].id;
+    let teamMateEmail = Team[i].email;
+    let teamMateSchool = Team[i].school;
+    let teamMateGithub = Team[i].github;
+if(teamMateRole === "Intern") {
     return `
     <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;">
-    <div class="card-header"><h1>Name : ${Team[i].name}</h1></div>
+    <div class="card-header"><h1>Name : ${teamMateName}</h1></div>
     <div class="card-body text-dark">
     <h3 class="card-title">Intern</h3>
-    <h4>Employee ID: ${Team[i].id}</h4>
+    <h4>Employee ID: ${teamMateId}</h4>
     <p class="card-text">
-    <a href = "mailto: ${Team[i].email}">${Team[i].email}</a>
-    <h4>School: ${Team[i].school}</h4>
+    <a href = "mailto: ${teamMateEmail}">${teamMateEmail}</a>
+    <h4>School: ${teamMateSchool}</h4>
     </p>
     </div>
     </div>
@@ -57,13 +63,13 @@ if(Team[i].getRole() === "Intern") {
 } else { 'Engineer'
     return `
     <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;">
-    <div class="card-header"><h1>Name : ${Team[i].name}</h1></div>
+    <div class="card-header"><h1>Name : ${teamMateName}</h1></div>
     <div class="card-body text-dark">
     <h3 class="card-title">Engineer</h3>
-    <h4>Employee ID: ${Team[i].id}</h4>
+    <h4>Employee ID: ${teamMateId}</h4>
     <p class="card-text">
-    <a href = "mailto: ${Team[i].email}">${Team[i].email}</a>
-    <h4>Github: <a href="https://github.com/${Team[i].github}">${Team[i].github}</a></h4>
+    <a href = "mailto: ${teamMateEmail}">${teamMateEmail}</a>
+    <h4>Github: <a href="https://github.com/${teamMateGithub}">${teamMateGithub}</a></h4>
     </p>
     </div>
     </div>
